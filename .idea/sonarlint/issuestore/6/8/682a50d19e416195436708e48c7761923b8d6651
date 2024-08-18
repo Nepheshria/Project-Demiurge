@@ -1,0 +1,30 @@
+
+J	cpp:S5421"/Global pointers should be const at every level.(µùœJ8¡³ƒ®–2
+J	cpp:S5421"/Global pointers should be const at every level.(Êœ¼^8ªü›®–2
+P	cpp:S5421"/Global pointers should be const at every level.(Â…”¹øÿÿÿÿ8àÙÆ¯–2
+y	cpp:S1172"XRemove the unused parameter "window", make it unnamed, or declare it "[[maybe_unused]]".(´óÔøúÿÿÿÿ8¡±›®–2
+Šcpp:S995"jMake the type of this parameter a pointer-to-const. The current type of "window" is "struct GLFWwindow *".(´óÔøúÿÿÿÿ8¡±›®–2
+R	cpp:S1659©"0Define each identifier in a dedicated statement.(Ú·ô¡øÿÿÿÿ8ÄŒâ¯–2
+;	cpp:S49624"Use the "nullptr" literal.(Ÿ¶öÉøÿÿÿÿ8ÃÂ­–2
+;	cpp:S49624"Use the "nullptr" literal.(Ÿ¶öÉøÿÿÿÿ8ÄÂ­–2
+6	cpp:S49625"Use the "nullptr" literal.(ŞˆÊÇ8ÄÂ­–2
+;	cpp:S4962S"Use the "nullptr" literal.(Äş’Ïüÿÿÿÿ8Áüô¯–2
+S	cpp:S5945X"2Use "std::string" instead of a C-style char array.(Âœø¿üÿÿÿÿ8Áüô¯–2
+;	cpp:S4962\"Use the "nullptr" literal.(Ì«‚ûÿÿÿÿ8Âüô¯–2
+6	cpp:S4962b"Use the "nullptr" literal.(Çñı8­ßö¯–2
+6	cpp:S4962h"Use the "nullptr" literal.(ëÇıÂ8­ßö¯–2
+6	cpp:S4962n"Use the "nullptr" literal.(ì´èÌ8Ş¨÷¯–2
+;	cpp:S4962t"Use the "nullptr" literal.(­¿ÀÙùÿÿÿÿ8ß¨÷¯–2
+<	cpp:S4962€"Use the "nullptr" literal.(Ì¤Ãüÿÿÿÿ8¨à¶°–2
+7	cpp:S4962‹"Use the "nullptr" literal.(‰Àñ8®‰¸°–2
+_	cpp:S5945–"=Use "std::array" or "std::vector" instead of a C-style array.(È§‚®şÿÿÿÿ8¾¹­¯–2
+Z	cpp:S5945œ"=Use "std::array" or "std::vector" instead of a C-style array.(ë§×õ8 ÆÜ¯–2
+_	cpp:S5945£"=Use "std::array" or "std::vector" instead of a C-style array.(‹õŠÈøÿÿÿÿ8¿¹­¯–2
+_	cpp:S5945©"=Use "std::array" or "std::vector" instead of a C-style array.(Ú·ô¡øÿÿÿÿ8ÊŒâ¯–2
+_	cpp:S5945©"=Use "std::array" or "std::vector" instead of a C-style array.(Ú·ô¡øÿÿÿÿ8ÊŒâ¯–2
+7	cpp:S4962³"Use the "nullptr" literal.(·Ö­8¡§·¯–2
+7	cpp:S4962Â"Use the "nullptr" literal.(ÓŸŸé8Ôıã¯–2
+<	cpp:S4962ã"Use the "nullptr" literal.(º˜€ùÿÿÿÿ8åùŸ°–2
+>cpp:S1250"Remove the commented out code.(¸ôÖ¡ıÿÿÿÿ8ÀÇ¯¬–2
+:cpp:S125µ"Remove the commented out code.(ûô¬8¶˜¹°–2
+?cpp:S125Ä"Remove the commented out code.(µòãşÿÿÿÿ8·˜¹°–2
