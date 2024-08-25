@@ -4,12 +4,15 @@ project(Project_Demiurge)
 set(CMAKE_CXX_STANDARD 20)
 
 file(GLOB SOURCES
-        *.h
-        *.c
+        src/*.h
+        src/*.c
 )
 
-add_executable(yourProj ${SOURCES})
+add_executable(Project_Demiurge main.cpp ${SOURCES}
+        src/rendering/shader.cpp
+        src/rendering/shader.h
+        src/rendering/texture.cpp
+        src/rendering/texture.h
+)
 
-add_executable(Project_Demiurge main.cpp
-        glad.c)
 target_link_libraries( Project_Demiurge glfw )
