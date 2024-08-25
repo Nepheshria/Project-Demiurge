@@ -215,7 +215,7 @@ int main() {
         glBindTexture(GL_TEXTURE_2D, texture1);
         glActiveTexture(GL_TEXTURE1);
         glBindTexture(GL_TEXTURE_2D, texture2);
-        
+
         // draw first triangle using the data from the first VAO
         shader.use();
         glBindVertexArray(VAOs[0]);

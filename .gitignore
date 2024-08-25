@@ -10,5 +10,6 @@ compile_commands.json
 CTestTestfile.cmake
 _deps
 .idea/*
-.idea/misc.xml
+.idea
+cmake-build-debug/*
 cmake-build-debug
