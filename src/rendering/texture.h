@@ -6,7 +6,7 @@
 #define TEXTURE_H
 
 #include <glad/glad.h> // include glad to get all the required OpenGL headers
-#include "../stb_image.h"
+#include "stb_image.h"
 
 #include <string>
 #include <fstream>
