@@ -1,10 +1,11 @@
 #include <iostream>
-#include <glad/glad.h> // unnecessary ?
+#include <glad/glad.h>
 #include <GLFW/glfw3.h>
-#include <valarray>
 #include "src/rendering/shader.h"
 #include "src/stb_image.h"
 #include <cmath>
+
+#include <glm/glm.hpp>
 
 float ratio = 0.2f;
 
