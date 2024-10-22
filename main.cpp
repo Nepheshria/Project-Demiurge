@@ -31,12 +31,6 @@ void processInput(GLFWwindow *window)
 
 int main() {
 
-    glm::vec4 vec(1.0f, 0.0f, 0.0f, 1.0f);
-    glm::mat4 trans = glm::mat4(1.0f);
-    trans = glm::translate(trans, glm::vec3(1.0f, 1.0f, 0.0f));
-    vec = trans * vec;
-    std::cout << vec.x << vec.y << vec.z << std::endl;
-
     // glfw: initialize and configure
     // ------------------------------
     glfwInit();
@@ -71,21 +65,21 @@ int main() {
     glViewport(0, 0, 800, 600);
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
-    Shader shader("resources/shaders/vertex/colorInputOffset.vert", "resources/shaders/fragment/texture.frag");
+    Shader shader("resources/shaders/vertex/translation.vert", "resources/shaders/fragment/texture.frag");
 
     // Triangles
     float t1_vertices[] = {
             // positions            // colors           // texture coords
-            10.0f, 1.0f, 0.0f,      0.0f, 0.0f, 1.0f,   0.5f, 0.5f,   // center
-            10.5f, -1.5f, 0.0f,     0.0f, 1.0f, 0.0f,   1.0f, 0.0f,   // bottom right
-            -0.5f, -1.5f, 0.0f,     1.0f, 0.0f, 0.0f,   0.0f, 0.0f,   // bottom left
+            10.0f, -10.0f, 0.0f,      0.0f, 0.0f, 1.0f,   0.5f, 0.5f,   // center
+            10.0f, -10.0f, 0.0f,     0.0f, 1.0f, 0.0f,   1.0f, 0.0f,   // bottom right
+            -10.0f, -10.0f, 0.0f,     1.0f, 0.0f, 0.0f,   0.0f, 0.0f,   // bottom left
     };
 
     float t2_vertices[] = {
             // positions          // colors           // texture coords (note that we changed them to 'zoom in' on our texture image)
-            0.5f,  0.5f, 0.0f,    1.0f, 1.0f, 1.0f,   1.0f, 1.0f, // top right
-            0.5f, -0.5f, 0.0f,    1.0f, 1.0f, 1.0f,   1.0f, 0.0f, // bottom right
-            -0.5f, -0.5f, 0.0f,   1.0f, 1.0f, 1.0f,   0.0f, 0.0f, // bottom left
+             0.0f,  0.5f, 0.0f,    1.0f, 1.0f, 1.0f,   1.0f, 1.0f, // top right
+             0.0f,  0.0f, 0.0f,    1.0f, 1.0f, 1.0f,   1.0f, 0.0f, // bottom right
+            -0.5f,  0.0f, 0.0f,   1.0f, 1.0f, 1.0f,   0.0f, 0.0f, // bottom left
             -0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 1.0f,   0.0f, 1.0f  // top left
     };
 
@@ -196,6 +190,10 @@ int main() {
     shader.setFloat("ratioTexture", 0.2f);
 
 
+    // Define rotation and translation.
+    glm::mat4 trans = glm::mat4(1.0f);
+    trans = glm::rotate(trans, glm::radians(45.0f), glm::vec3(0.0, 0.0, 1.0));
+
     // gflw: Render Loop
     // ------------------------------
     while(!glfwWindowShouldClose(window))
@@ -210,15 +208,13 @@ int main() {
 
         // 4. draw the object
 
-        // Set shaderProgram offset
-        float timeValue = glfwGetTime();
-        float offset = (sin(timeValue) / 2.0f);
-        if (offset>0){
-            glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-        } else {
-            glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);//GL_LINE
-        }
-        shader.setFloat("offset", offset);
+        // Set shaderProgram variables
+        unsigned int transformLoc = glGetUniformLocation(shader.ID, "transform");
+        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(trans));
+
+        trans = glm::mat4(1.0f);
+        trans = glm::translate(trans, glm::vec3(fmod((1.5f*(float)glfwGetTime()), 1.0f), fmod((-0.5f*1), 1.0f), 0.0f));
+        trans = glm::rotate(trans, (float)glfwGetTime(), glm::vec3(0.0f, 0.0f, 1.0f));
 
         // bind textures on corresponding texture units
         glActiveTexture(GL_TEXTURE0);
