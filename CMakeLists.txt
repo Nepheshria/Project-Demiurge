@@ -1,5 +1,5 @@
-cmake_minimum_required(VERSION 3.29)
-cmake_policy(VERSION 3.0)
+cmake_minimum_required(VERSION 3.5)
+cmake_policy(VERSION 3.5)
 
 project(Project_Demiurge)
 
@@ -21,15 +21,16 @@ link_directories(${CMAKE_SOURCE_DIR}/lib) # Libs
 
 include_directories(${CMAKE_SOURCE_DIR}/includes) # includes
 
+message(STATUS "======= find the required packages =======")
 # find the required packages
 find_package(GLM REQUIRED)
 message(STATUS "GLM included at ${GLM_INCLUDE_DIR}")
 find_package(GLFW3 REQUIRED)
-message(STATUS "Found GLFW3 in ${GLFW3_INCLUDE_DIR}")
-#find_package(ASSIMP REQUIRED)
-#message(STATUS "Found ASSIMP in ${ASSIMP_INCLUDE_DIR}")
-# find_package(SOIL REQUIRED)
-# message(STATUS "Found SOIL in ${SOIL_INCLUDE_DIR}")
+message(STATUS "Found GLFW3 in ${GLFW3_INCLUDE_DIR} & ${GLFW3_LIBRARY}")
+find_package(ASSIMP REQUIRED)
+message(STATUS "Found ASSIMP in ${ASSIMP_INCLUDE_DIR}")
+#find_package(SOIL REQUIRED)
+#message(STATUS "Found SOIL in ${SOIL_INCLUDE_DIR}")
 # find_package(GLEW REQUIRED)
 # message(STATUS "Found GLEW in ${GLEW_INCLUDE_DIR}")
 
@@ -38,10 +39,13 @@ if(APPLE)
     message(STATUS "Found Freetype in ${FREETYPE_INCLUDE_DIRS}")
 endif(APPLE)
 
+message(STATUS "=========== Defines Libraries ============")
 if(WIN32)
+    message(STATUS "Win 32")
     set(LIBS glfw3 opengl32 assimp freetype irrKlang)
     add_definitions(-D_CRT_SECURE_NO_WARNINGS)
 elseif(UNIX AND NOT APPLE)
+    message(STATUS "UNIX AND NOT APPLE")
     set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall")
     find_package(OpenGL REQUIRED)
     add_definitions(${OPENGL_DEFINITIONS})
@@ -51,6 +55,7 @@ elseif(UNIX AND NOT APPLE)
     set(LIBS ${GLFW3_LIBRARY} X11 Xrandr Xinerama Xi Xxf86vm Xcursor GL dl pthread freetype ${ASSIMP_LIBRARY})
     set (CMAKE_CXX_LINK_EXECUTABLE "${CMAKE_CXX_LINK_EXECUTABLE} -ldl")
 elseif(APPLE)
+    message(STATUS "APPLE")
     INCLUDE_DIRECTORIES(/System/Library/Frameworks)
     FIND_LIBRARY(COCOA_LIBRARY Cocoa)
     FIND_LIBRARY(OpenGL_LIBRARY OpenGL)
@@ -70,6 +75,9 @@ set(LIBS ${LIBS} STB_IMAGE)
 add_library(GLAD "src/glad.c")
 set(LIBS ${LIBS} GLAD)
 
+
+
+message(STATUS "============= Define sources =============")
 #######################################"
 # Old
 file(GLOB SOURCES
